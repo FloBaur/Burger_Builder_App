@@ -1,0 +1,10 @@
+.orderSummary{
+    width: 100%;
+    display: inline-block;
+    text-align: center;
+}
+
+.orderSummary ul{
+    list-style-type: none;
+}
+
