@@ -5,7 +5,6 @@ import {withRouter} from "react-router-dom";
 import {Route} from "react-router-dom";
 import ContactData from "./ContactData/ContactData";
 import {connect} from "react-redux";
-import * as actionTypes from "../../store/actions";
 
 class Checkout extends Component{
 
@@ -24,7 +23,7 @@ class Checkout extends Component{
         return(
 
             <div className="orderSummary">
-                {/*{this.props.orderSummary}*/}
+                {this.props.orderSummary}
 
                 <CheckoutSummary ingredients={this.props.ing}
                                  checkoutCancelled = {this.checkoutCancelledHandler}

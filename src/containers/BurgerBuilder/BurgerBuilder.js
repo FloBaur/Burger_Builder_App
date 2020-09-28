@@ -11,8 +11,9 @@ import {Route, Switch, Redirect} from "react-router-dom";
 import Checkout from "../Checkout/Checkout";
 import {withRouter} from "react-router-dom";
 import Orders from "../Orders/Orders";
-import * as actionTypes from "../../store/actions";
+import * as burgerBuilderActions from "../../store/actions/index";
 import {connect} from 'react-redux';
+
 
 let INGREDIENT_PRICES = {
     salad: 0,
@@ -24,10 +25,7 @@ let INGREDIENT_PRICES = {
 class BurgerBuilder extends Component{
 
     state = {
-
-
-        loading: false,
-        error: false
+        purchasing: false
     };
 
     componentDidMount() {
@@ -39,12 +37,7 @@ class BurgerBuilder extends Component{
         //     this.setState({error: true});
         // });
 
-        axiosInstance.get('https://react-my-burger-fe2a0.firebaseio.com/prices.json').then(response => {
-            INGREDIENT_PRICES = response.data;
-        })
-            .catch(error =>{
-                this.setState({error: true});
-            });
+
     }
 
     updatePurchaseState = (ingredients) =>{
@@ -116,10 +109,10 @@ class BurgerBuilder extends Component{
                                          price = {this.props.prc}/>;
         }
 
-        if(this.state.loading)
-        {
-            orderSummary = <Spinner/>;
-        }
+        // if(this.state.loading)
+        // {
+        //     orderSummary = <Spinner/>;
+        // }
 
         return (
             <Aux>
@@ -150,8 +143,8 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
     return{
-        onAddIngredient: (ingName) => dispatch({type: actionTypes.ADD_INGREDIENT, ingredientName: ingName}),
-        onRemoveIngredient: (ingName) => dispatch({type: actionTypes.REMOVE_INGREDIENT, ingredientName: ingName}),
+        onAddIngredient: (ingName) => dispatch(burgerBuilderActions.addIngredient(ingName)),
+        onRemoveIngredient: (ingName) => dispatch(burgerBuilderActions.removeIngredient(ingName)),
     };
 };
 
