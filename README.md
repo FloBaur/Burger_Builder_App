@@ -1,3 +1,7 @@
+## React Project
+
+My first bigger Web-App-Project to learn react. This is an App for a delivery service, where the customer can build up an individual burger. The customer can choose between 4 different ingredients and after this prozess order the whole burger with the appropriate price. After the order the customer can look at his orders in the past. The states get dispatched to google firebase.  
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
